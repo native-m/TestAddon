@@ -59,12 +59,3 @@ JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
 
 	return JNI_VERSION_1_2;
 }
-
-/*
- Hey this is me the coder of this example and I just want to tell you this :
- Please don't just copy this and use it. Try to actually learn C++ and some
- ARM Assembler. If you want to use this as a guideline go ahead just don't copy
- this and use it. I really want people to learn how to do Native Modding instead
- of just relying on others *looks at ModPE and zhuowei*. Hope you guys enjoyed
- this example that I decided to do in my past time. :)
-*/
