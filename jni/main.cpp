@@ -4,11 +4,11 @@
 #include <stdlib.h>
 #include <Substrate.h>
 
-/* MCPE Base Headers */
+/* MCPE Header */
 #include "com/mojang/minecraftpe/Item.h"
 #include "com/mojang/minecraftpe/I18n.h"
 
-/* My Example Headers */
+/* Contoh header gw */
 #include "com/example/examples/item/ExampleItem.h"
 #include "com/example/examples/item/BaseItems.h"
 
@@ -16,7 +16,7 @@
 
 #define LOGI(...) ((void)__android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__))
 
-/* Inits our item */
+/* initialisi item kita */
 
 static void (*_Item$initItems)();
 
@@ -27,7 +27,7 @@ static void Item$initItems()
     BaseItems::initItems();
 }
 
-/* Inits our item to the creative inv */
+/* initialisi item ke inventori creative */
 
 static void (*_Item$initCreativeItems)();
 
@@ -38,24 +38,24 @@ static void Item$initCreativeItems()
     Item::addCreativeItem(511, 0);
 }
 
-/* Changes the name of our Items/Blocks */
+/* Ubah nama block atau item */
 
 static std::string (*_I18n$get)(std::string const&);
 
 static std::string I18n$get(std::string const& key)
 {
     if(key == "item.examplename.name") return "The Name";
-    /* Basically sees if there is a name called item.examplename.name then returns the string The Name
-       So it makes the name of the item The Name :P */
+    /* String akan mereturn The Name
+       jadi ini akan memberikan nama pada item */
 
     return _I18n$get(key);
 }
 
 JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
 
-    MSHookFunction((void*) &Item::initItems, (void*) &Item$initItems, (void**) &_Item$initItems); //hooking
-    MSHookFunction((void*) &Item::initCreativeItems, (void*) &Item$initCreativeItems, (void**) &_Item$initCreativeItems); //more hooking
-    MSHookFunction((void*) &I18n::get, (void*) &I18n$get, (void**) &_I18n$get); //even MOAR hooking
+    MSHookFunction((void*) &Item::initItems, (void*) &Item$initItems, (void**) &_Item$initItems); //hook
+    MSHookFunction((void*) &Item::initCreativeItems, (void*) &Item$initCreativeItems, (void**) &_Item$initCreativeItems); //hook
+    MSHookFunction((void*) &I18n::get, (void*) &I18n$get, (void**) &_I18n$get); //hook i18n
 
 	return JNI_VERSION_1_2;
 }
