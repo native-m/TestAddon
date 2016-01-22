@@ -22,7 +22,7 @@ static void (*_Item$initItems)();
 
 static void Item$initItems()
 {
-    _Item$initItems();
+    _Item$initItems(); // hook
 
     BaseItems::initItems();
 }
