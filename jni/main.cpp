@@ -52,7 +52,7 @@ static std::string I18n$get(std::string const& key)
 }
 
 JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
-
+	// Hook theme all
     MSHookFunction((void*) &Item::initItems, (void*) &Item$initItems, (void**) &_Item$initItems); //hook
     MSHookFunction((void*) &Item::initCreativeItems, (void*) &Item$initCreativeItems, (void**) &_Item$initCreativeItems); //hook
     MSHookFunction((void*) &I18n::get, (void*) &I18n$get, (void**) &_I18n$get); //hook i18n
