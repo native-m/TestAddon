@@ -18,44 +18,44 @@
 
 /* initialisi item kita */
 
-static void (*_Item$initItems)();
+static void (*_Item$initialisasiItem)();
 
-static void Item$initItems()
+static void Item$initialisasiItem()
 {
-    _Item$initItems(); // hook
+    _Item$initialisasiItem(); // hook
 
     BaseItems::initItems();
 }
 
 /* initialisi item ke inventori creative */
 
-static void (*_Item$initCreativeItems)();
+static void (*_Item$initialisasiItemModeKreatif)();
 
-static void Item$initCreativeItems()
+static void Item$Item$initialisasiItemModeKreatif()
 {
-    _Item$initCreativeItems();
+    _Item$Item$initialisasiItemModeKreatif();
 
     Item::addCreativeItem(511, 0);
 }
 
 /* Ubah nama block atau item */
 
-static std::string (*_I18n$get)(std::string const&);
+static std::string (*_I18n$memperoleh)(std::string const&);
 
-static std::string I18n$get(std::string const& key)
+static std::string I18n$memperoleh(std::string const& kata_kunci)
 {
-    if(key == "item.examplename.name") return "The Name";
+    if(key == "item.namaitem.name") return "Nama item";
     /* String akan mereturn The Name
        jadi ini akan memberikan nama pada item */
 
-    return _I18n$get(key);
+    return _I18n$memperoleh(kata_kunci);
 }
 
 JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
-	// Hook theme all
-    MSHookFunction((void*) &Item::initItems, (void*) &Item$initItems, (void**) &_Item$initItems); //hook
-    MSHookFunction((void*) &Item::initCreativeItems, (void*) &Item$initCreativeItems, (void**) &_Item$initCreativeItems); //hook
-    MSHookFunction((void*) &I18n::get, (void*) &I18n$get, (void**) &_I18n$get); //hook i18n
+	// Hook semua!!!
+    MSHookFunction((void*) &Item::initItems, (void*) &Item$initialisasiItemItem$initialisasiItem, (void**) &_Item$Item$initialisasiItem); //hook item di mode kreatif
+    MSHookFunction((void*) &Item::initCreativeItems, (void*) &Item$Item$initialisasiItemModeKreatif, (void**) &_Item$Item$initialisasiItemModeKreatif); //hook item di mode kreatif
+    MSHookFunction((void*) &I18n::get, (void*) &I18n$memperoleh, (void**) &_I18n$memperoleh); //hook i18n
 
 	return JNI_VERSION_1_2;
 }
